@@ -1,9 +1,16 @@
 import express from 'express';
+import "reflect-metadata";
+import { createConnection } from 'typeorm';
 
-const app = express();
-app.use(express.json());
-const PORT = 4000;
+createConnection().then(() => {
+  const app = express();
+  const PORT = 4000;
 
-app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`)
+  app.use(express.json());
+
+  app.listen(PORT, () => {
+    console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`)
+  })
+}).catch((error) => {
+  console.log("Unable to connect to the database", error)
 })
