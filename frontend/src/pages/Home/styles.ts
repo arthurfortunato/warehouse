@@ -41,6 +41,7 @@ export const BodyContainer = styled.main`
   h2 { 
     text-align: center;
     font-size: 2.2rem;
+    font-weight: 400;
     color: #fff;
   }
 
@@ -64,7 +65,7 @@ export const ButtonRegister = styled.button `
   
   font-size: 22px;
   color: #fff;
-  transition: 0.3s;
+  transition: 0.4s;
 
   &:hover {
     background: #2C5282;
