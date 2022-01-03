@@ -3,10 +3,9 @@ import {
   SectionInput,
   SectionLanding,
   BodyContainer,
-  ButtonRegister,
-  ButtonStock
-
 } from './styles';
+
+import { Button } from '../../components/Button';
 
 import landing from '../../assets/landing.png'
 
@@ -20,8 +19,8 @@ export const Home = () => {
           <h1>Seja bem vindo</h1>
           <p>Warehouse é um sistema de organização de estoque</p>
           <div>
-            <ButtonRegister>Cadastrar produto</ButtonRegister>
-            <ButtonStock>Ver estoque</ButtonStock>
+            <Button>Cadastrar produto</Button>
+            <Button className="stock">Ver estoque</Button>
           </div>
         </BodyContainer>
       </SectionInput>
