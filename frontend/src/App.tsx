@@ -1,6 +1,12 @@
+import { Home } from './pages/Home'
+import { GlobalStyle } from './styles/globalStyles';
+
 function App() {
   return (
-    <h1>Iniciando o Projeto com React!</h1>
+    <>
+      <GlobalStyle />
+      <Home />
+    </>
   );
 }
 
