@@ -12,15 +12,7 @@ import { Input } from '../../components/Input';
 import { Link } from 'react-router-dom';
 
 import { api } from '../../services/api';
-import { useEffect, useState } from 'react';
-
-type Product = {
-  id: string;
-  name: string;
-  code: string;
-  sector: string;
-  price: string;
-}
+import { useState } from 'react';
 
 export const Products = () => {
   const [name, setName] = useState('');
@@ -28,25 +20,14 @@ export const Products = () => {
   const [sector, setSector] = useState('');
   const [price, setPrice] = useState('');
 
-  const [productsList, setProductsList] = useState<Product[]>([])
-
   async function getProducts(name: string, code: string, sector: string, price: string) {
     await api.post('/product/newproducts', {
       name: name,
       code: code,
       sector: sector,
       price: price
-    }).then(response => {
-      const list = getUpdateList(response.data, true);
-      setProductsList(list)
     })
-  }
-
-  function getUpdateList(product: Product, add = true) {
-    const list = productsList.filter(e => e.id !== product.id);
-    if (add) list.unshift(product);
-    return list;
-  }
+  };
 
   async function saveProduct() {
     await getProducts(
@@ -59,13 +40,7 @@ export const Products = () => {
     setCode('')
     setSector('')
     setPrice('')
-  }
-
-  useEffect(() => {
-    api.get<Product[]>('/product/myproducts').then(response => {
-      setProductsList(response.data)
-    })
-  }, []);
+  };
 
   return (
     <Container>

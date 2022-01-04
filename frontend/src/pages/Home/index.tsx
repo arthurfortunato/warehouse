@@ -25,7 +25,11 @@ export const Home = () => {
                 Cadastrar produto
               </Link>
             </Button>
-            <Button className="stock">Ver estoque</Button>
+            <Button className="stock">
+              <Link to="/products">
+                Ver estoque
+              </Link>
+            </Button>
           </div>
         </BodyContainer>
       </SectionInput>
