@@ -46,11 +46,16 @@ export const Buttons = styled.div`
  padding-left: 40px;
 
  .cancel {
-   background: #E53E3E;
+   background: #E53E3E; 
 
    &: hover {
      background: #C53030;
-   }
+
+    }
+    .return {
+      text-decoration: none;
+      color: #fff;
+    }
  }
 `
 
