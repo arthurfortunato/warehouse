@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Product } from '../entities/Product';
+import { AppError } from '../error/AppError';
 
 interface ICreateProduct {
   name: string;
@@ -11,35 +12,31 @@ interface ICreateProduct {
 
 export class CreateProductService {
 
-  async execute({ name, code, sector, price }: ICreateProduct) {
+  async execute(product: ICreateProduct) {
     const productRepository = getRepository(Product);
 
-    if (!name) {
-      throw new Error('Incorrect Name')
+    if (!product.name) {
+      throw new AppError('Incorrect Name', 401)
     }
-    if (!code) {
-      throw new Error('Incorrect Code')
+    if (!product.code) {
+      throw new AppError('Incorrect Code', 401)
     }
-    if (!sector) {
-      throw new Error('Incorrect Sector')
+    if (!product.sector) {
+      throw new AppError('Incorrect Sector', 401)
     }
-    if (!price) {
-      throw new Error('Incorrect Price')
+    if (!product.price) {
+      throw new AppError('Incorrect Price', 401)
     }
 
-    const productAlreadyExists = await productRepository.findOne(code)
+    const productAlreadyExists = await productRepository.findOne({where: {code: product.code}})
 
     if (productAlreadyExists) {
-      throw new Error('Produto já existente');
+      throw new AppError('Existing product', 401);
     }
 
-    const newProduct = productRepository.create({
-      name, code, sector, price
-    });
+    await productRepository.save(product);
 
-    await productRepository.save(newProduct);
-
-    return newProduct;
+    return {product};
   }
 
   async getProducts() {
@@ -48,7 +45,7 @@ export class CreateProductService {
     const currentProduct = await productRepository.find()
 
     if (!currentProduct) {
-      throw new Error('Produto não encontrado')
+      throw new AppError('Product not found', 401);
     }
 
     return currentProduct;

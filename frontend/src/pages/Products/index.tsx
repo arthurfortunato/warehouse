@@ -20,27 +20,31 @@ export const Products = () => {
   const [sector, setSector] = useState('');
   const [price, setPrice] = useState('');
 
-  async function getProducts(name: string, code: string, sector: string, price: string) {
+  const getProducts = async (name: string, code: string, sector: string, price: string) => {
     await api.post('/product/newproducts', {
       name: name,
       code: code,
       sector: sector,
       price: price
     })
-  };
+  }
 
-  async function saveProduct() {
-    await getProducts(
-      name, 
-      code, 
-      sector, 
-      price
-    )
-    setName('')
-    setCode('')
-    setSector('')
-    setPrice('')
-  };
+  const saveProduct = async () => {
+    try {
+      await getProducts(
+        name,
+        code,
+        sector,
+        price
+      )
+      setName('')
+      setCode('')
+      setSector('')
+      setPrice('')
+    } catch (error) {
+     alert('Preencha todas as informações')
+    }
+  }
 
   return (
     <Container>
@@ -55,13 +59,13 @@ export const Products = () => {
           <Input
             placeholder="Cadeira"
             value={name}
-            onChange={(event) => {setName(event.target.value)}}
+            onChange={(event) => { setName(event.target.value) }}
           />
           <Label>Código <p>*</p></Label>
           <Input
             placeholder="5002"
             value={code}
-            onChange={(event) => {setCode(event.target.value)}}
+            onChange={(event) => { setCode(event.target.value) }}
           />
         </InputContainer>
 
@@ -70,13 +74,13 @@ export const Products = () => {
           <Input
             placeholder="Patrimônio"
             value={sector}
-            onChange={(event) => {setSector(event.target.value)}}
+            onChange={(event) => { setSector(event.target.value) }}
           />
           <Label>Valor unitário<p>*</p></Label>
           <Input
             placeholder="450.55"
             value={price}
-            onChange={(event) => {setPrice(event.target.value)}}
+            onChange={(event) => { setPrice(event.target.value) }}
           />
         </InputContainer>
       </BodyContainer>

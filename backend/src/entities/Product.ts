@@ -37,7 +37,6 @@ class Product {
       this.id = uuid();
     }
   }
-
 }
 
 export { Product }

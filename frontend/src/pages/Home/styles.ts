@@ -63,7 +63,12 @@ export const BodyContainer = styled.main`
     }
   }
 
-  .newProducts {
+  .newProducts{
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .products{
     text-decoration: none;
     color: #fff;
   }

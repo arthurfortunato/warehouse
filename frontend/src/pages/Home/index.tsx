@@ -26,7 +26,7 @@ export const Home = () => {
               </Link>
             </Button>
             <Button className="stock">
-              <Link to="/products">
+              <Link to="/products" className="products">
                 Ver estoque
               </Link>
             </Button>

@@ -7,10 +7,12 @@ export const Container = styled.main`
 `;
 
 export const Header = styled.header`
+  height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 40px;
+
 
   h1 {
     font-family: "Roboto", sans-serif;
@@ -28,18 +30,21 @@ export const Header = styled.header`
   }
 `
 export const BodyContainer = styled.main`
+  height: calc(100vh - 150px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 `
 
 export const Table = styled.table`
  width: 90%;
  text-align: left;
  border-collapse: collapse;
- 
- thead th{
+ margin-top: 50px;
+
+ thead th {
    color: #485564;
    font-weight: normal;
    font-size: 1.2rem;
@@ -47,7 +52,7 @@ export const Table = styled.table`
    text-align: left;
   }
   
-  tbody td{
+  tbody td {
   border-top: 1px solid #485564;
   color: #fff;
   font-weight: normal;
