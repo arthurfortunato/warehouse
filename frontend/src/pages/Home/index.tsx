@@ -8,6 +8,7 @@ import {
 import { Button } from '../../components/Button';
 
 import landing from '../../assets/landing.png'
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   return (
@@ -18,8 +19,12 @@ export const Home = () => {
           <h2>Warehouse</h2>
           <h1>Seja bem vindo</h1>
           <p>Warehouse é um sistema de organização de estoque</p>
-          <div>
-            <Button>Cadastrar produto</Button>
+          <div className="buttons">
+            <Button>
+              <Link to="/newProducts" className="newProducts">
+                Cadastrar produto
+              </Link>
+            </Button>
             <Button className="stock">Ver estoque</Button>
           </div>
         </BodyContainer>

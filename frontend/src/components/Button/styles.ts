@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const ButtonContainer = styled.button `
   background: #3182CE;
-  padding: 15px 20px;
+  padding: 16px 28px;
   margin-right: 20px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
   
-  font-size: 22px;
+  font: 600 1.2rem "Nunito", sans-serif;
   color: #fff;
   transition: 0.4s;
 
