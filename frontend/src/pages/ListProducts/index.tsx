@@ -77,7 +77,9 @@ export const ProductsList = () => {
                   <td>{product.sector}</td>
                   <td>
                     <button className="edit">
+                      <Link to={`/editproducts/${product.id}`}>
                       <FaPencilAlt size={"15px"} />
+                      </Link>
                     </button>
                   </td>
                   <td>
