@@ -18,7 +18,7 @@ interface IProduct {
   name: string;
   code: string;
   sector: string;
-  price: string;
+  amount: string;
 }
 
 export const ProductsList = () => {
@@ -60,7 +60,7 @@ export const ProductsList = () => {
             <tr>
               <th>Nome do Produto</th>
               <th>Código</th>
-              <th>Valor</th>
+              <th>Quantidade</th>
               <th>Setor</th>
               <th>Editar</th>
               <th>Excluir</th>
@@ -73,7 +73,7 @@ export const ProductsList = () => {
                 <tr key={product.id}>
                   <td>{product.name}</td>
                   <td>{product.code}</td>
-                  <td>{product.price}</td>
+                  <td>{product.amount}</td>
                   <td>{product.sector}</td>
                   <td>
                     <button className="edit">

@@ -11,6 +11,8 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Link } from 'react-router-dom';
 
+import toast, { Toaster } from 'react-hot-toast'
+
 import { api } from '../../services/api';
 import { useEffect, useState } from 'react';
 
@@ -19,7 +21,7 @@ interface IProduct {
   name: string;
   code: string;
   sector: string;
-  price: string;
+  amount: string;
 }
 
 const EditProducts = (product: Partial<IProduct>) => {
@@ -27,15 +29,15 @@ const EditProducts = (product: Partial<IProduct>) => {
   const [name, setName] = useState('');
   const [code, setCode] = useState('');
   const [sector, setSector] = useState('');
-  const [price, setPrice] = useState('');
+  const [amount, setAmount] = useState('');
 
-  const getProducts = async (name: string, code: string, sector: string, price: string) => {
+  const getProducts = async (name: string, code: string, sector: string, amount: string) => {
 
     await api.put(`/product/edit/${localStorage.getItem('idCode')}`, {
       name: name,
       code: code,
       sector: sector,
-      price: price
+      amount: amount
     })
   }
 
@@ -45,13 +47,12 @@ const EditProducts = (product: Partial<IProduct>) => {
         name,
         code,
         sector,
-        price
+        amount
       ).then(() => {
         window.location.reload()
       })
-        
     } catch (error) {
-      alert('Preencha todas as informações')
+      toast.error('Preencha todas as informações')
     }
   }
 
@@ -102,10 +103,10 @@ const EditProducts = (product: Partial<IProduct>) => {
             value={sector}
             onChange={(event) => { setSector(event.target.value) }}
           />
-          <Label>Valor unitário<p>*</p></Label>
+          <Label>Quantidade<p>*</p></Label>
           <Input
-            value={price}
-            onChange={(event) => { setPrice(event.target.value) }}
+            value={amount}
+            onChange={(event) => { setAmount(event.target.value) }}
           />
         </InputContainer>
       </BodyContainer>
@@ -114,6 +115,10 @@ const EditProducts = (product: Partial<IProduct>) => {
           <Link to="/products">
             Editar
           </Link>
+          <Toaster
+            position="top-center"
+            reverseOrder={false}
+          />
         </Button>
         <Button className="cancel">
           <Link to="/">

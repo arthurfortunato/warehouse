@@ -11,6 +11,8 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Link } from 'react-router-dom';
 
+import toast, { Toaster } from 'react-hot-toast';
+
 import { api } from '../../services/api';
 import { useState } from 'react';
 
@@ -18,14 +20,14 @@ export const Products = () => {
   const [name, setName] = useState('');
   const [code, setCode] = useState('');
   const [sector, setSector] = useState('');
-  const [price, setPrice] = useState('');
+  const [amount, setAmount] = useState('');
 
-  const getProducts = async (name: string, code: string, sector: string, price: string) => {
+  const getProducts = async (name: string, code: string, sector: string, amount: string) => {
     await api.post('/product/newproducts', {
       name: name,
       code: code,
       sector: sector,
-      price: price
+      amount: amount
     })
   }
 
@@ -35,14 +37,15 @@ export const Products = () => {
         name,
         code,
         sector,
-        price
+        amount
       )
       setName('')
       setCode('')
       setSector('')
-      setPrice('')
+      setAmount('')
+      toast.success('Produto cadastrado!')
     } catch (error) {
-      alert('Preencha todas as informações')
+      toast.error('Preencha todas as informações')
     }
   }
 
@@ -62,12 +65,14 @@ export const Products = () => {
           <Label>Digite o nome do produto <p>*</p></Label>
           <Input
             placeholder="Cadeira"
+            type="text"
             value={name}
             onChange={(event) => { setName(event.target.value) }}
           />
           <Label>Código <p>*</p></Label>
           <Input
             placeholder="5002"
+            type="text"
             value={code}
             onChange={(event) => { setCode(event.target.value) }}
           />
@@ -80,16 +85,21 @@ export const Products = () => {
             value={sector}
             onChange={(event) => { setSector(event.target.value) }}
           />
-          <Label>Valor unitário<p>*</p></Label>
+          <Label>Quantidade<p>*</p></Label>
           <Input
-            placeholder="450.55"
-            value={price}
-            onChange={(event) => { setPrice(event.target.value) }}
+            placeholder="210"
+            type="number"
+            value={amount}
+            onChange={(event) => { setAmount(event.target.value) }}
           />
         </InputContainer>
       </BodyContainer>
       <Buttons>
         <Button onClick={saveProduct}>Cadastrar</Button>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
         <Button className="cancel">
           <Link to="/">
             Cancelar
