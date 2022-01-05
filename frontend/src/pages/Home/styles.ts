@@ -62,15 +62,5 @@ export const BodyContainer = styled.main`
     background: #2F855A;
     }
   }
-
-  .newProducts{
-    text-decoration: none;
-    color: #fff;
-  }
-
-  .products{
-    text-decoration: none;
-    color: #fff;
-  }
 `
 

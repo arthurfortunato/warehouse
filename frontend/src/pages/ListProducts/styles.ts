@@ -23,17 +23,11 @@ export const Header = styled.header`
   button {
     padding: 12px 24px;
   }
-
-  .return {
-    text-decoration: none;
-    color: #fff;
-  }
 `
 export const BodyContainer = styled.main`
   height: calc(100vh - 150px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   overflow: auto;
 `
@@ -50,6 +44,13 @@ export const Table = styled.table`
    font-size: 1.2rem;
    padding: 1rem 2rem;
    text-align: left;
+  }
+
+  tbody tr {
+    transition: 0.3s;
+    &:hover {
+      background: #485564;
+    }
   }
   
   tbody td {

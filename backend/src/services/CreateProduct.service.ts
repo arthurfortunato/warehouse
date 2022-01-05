@@ -28,7 +28,7 @@ export class CreateProductService {
       throw new AppError('Incorrect Price', 401)
     }
 
-    const productAlreadyExists = await productRepository.findOne({where: {code: product.code}})
+    const productAlreadyExists = await productRepository.findOne({ where: { code: product.code } })
 
     if (productAlreadyExists) {
       throw new AppError('Existing product', 401);
@@ -36,7 +36,7 @@ export class CreateProductService {
 
     await productRepository.save(product);
 
-    return {product};
+    return { product };
   }
 
   async getProducts() {
@@ -49,5 +49,36 @@ export class CreateProductService {
     }
 
     return currentProduct;
+  }
+
+  async edit(request: Request, response: Response) {
+    const {id} = request.params;
+    const productRepository = getRepository(Product);
+
+    const {
+      name,
+      code,
+      sector,
+      price,
+    } = request.body;
+
+    const currentProduct = await productRepository.findOne(id)
+
+    currentProduct.name = name;
+    currentProduct.code = code;
+    currentProduct.sector = sector;
+    currentProduct.price = price;
+
+    await productRepository.save(currentProduct)
+
+    return response.send(currentProduct)
+  }
+
+  async destroy(request: Request, response: Response) {
+    const productRepository = getRepository(Product);
+
+    const product = await productRepository.delete(request.params.id);
+
+    return response.send(product)
   }
 }

@@ -6,7 +6,7 @@ import {
 
 import { Home } from "../pages/Home";
 import { Products } from "../pages/Products";
-import { ListProducts } from "../pages/ListProducts";
+import { ProductsList } from "../pages/ListProducts";
 
 export const Router = () => {
 
@@ -15,7 +15,7 @@ export const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/newProducts" element={<Products />} />
-        <Route path="/products" element={<ListProducts />} />
+        <Route path="/products" element={<ProductsList />} />
       </Routes>
     </BrowserRouter>
   )

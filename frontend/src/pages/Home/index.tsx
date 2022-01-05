@@ -21,12 +21,12 @@ export const Home = () => {
           <p>Warehouse é um sistema de organização de estoque</p>
           <div className="buttons">
             <Button>
-              <Link to="/newProducts" className="newProducts">
+              <Link to="/newProducts">
                 Cadastrar produto
               </Link>
             </Button>
             <Button className="stock">
-              <Link to="/products" className="products">
+              <Link to="/products">
                 Ver estoque
               </Link>
             </Button>

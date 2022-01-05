@@ -42,7 +42,7 @@ export const Products = () => {
       setSector('')
       setPrice('')
     } catch (error) {
-     alert('Preencha todas as informações')
+      alert('Preencha todas as informações')
     }
   }
 
@@ -50,7 +50,11 @@ export const Products = () => {
     <Container>
       <Header>
         <h1>Adicione um novo produto a seu estoque</h1>
-        <Button className="registeredProducts">Ver produtos cadastrados</Button>
+        <Button className="registeredProducts">
+          <Link to="/products">
+            Ver produtos cadastrados
+          </Link>
+        </Button>
       </Header>
 
       <BodyContainer>
@@ -87,7 +91,7 @@ export const Products = () => {
       <Buttons>
         <Button onClick={saveProduct}>Cadastrar</Button>
         <Button className="cancel">
-          <Link to="/" className="return">
+          <Link to="/">
             Cancelar
           </Link>
         </Button>

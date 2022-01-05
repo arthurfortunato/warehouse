@@ -52,10 +52,6 @@ export const Buttons = styled.div`
      background: #C53030;
 
     }
-    .return {
-      text-decoration: none;
-      color: #fff;
-    }
  }
 `
 

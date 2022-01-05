@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Link } from 'react-router-dom';
 
-type Product = {
+interface IProduct {
   id: string;
   name: string;
   code: string;
@@ -21,11 +21,24 @@ type Product = {
   price: string;
 }
 
-export const ListProducts = () => {
-  const [productsList, setProductsList] = useState<Product[]>([])
+export const ProductsList = () => {
+  const [productsList, setProductsList] = useState<IProduct[]>([])
+
+  function getUpdateList(product: IProduct, add = true) {
+    const list = productsList.filter(e => e.id !== product.id)
+    if (add) list.unshift(product);
+    return list;
+  }
+
+  async function handleDeleteProduct(product: IProduct) {
+   await api.delete(`product/delete/${product.id}`).then(response => {
+     const list = getUpdateList(product, false)
+     setProductsList(list)
+   })
+  }
 
   useEffect(() => {
-    api.get<Product[]>('/product/myproducts').then(response => {
+    api.get<IProduct[]>('/product/myproducts').then(response => {
       setProductsList(response.data)
     })
   }, []);
@@ -35,7 +48,7 @@ export const ListProducts = () => {
       <Header>
         <h1>Produtos cadastrados em seu estoque</h1>
         <Button>
-          <Link to="/newproducts" className="return">
+          <Link to="/newproducts">
             Adicionar novos produtos
           </Link>
         </Button>
@@ -68,16 +81,13 @@ export const ListProducts = () => {
                     </button>
                   </td>
                   <td>
-                    <button className="delete">
+                    <button type="submit" onClick={() => handleDeleteProduct(product)} className="delete">
                       <BsFillTrashFill size={"15px"} color={"#fff"}/>
                     </button>
                   </td>
                 </tr>
               )
             })}
-            <tr>
-
-            </tr>
           </tbody>
         </Table>
       </BodyContainer>
