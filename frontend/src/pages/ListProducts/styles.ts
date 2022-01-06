@@ -13,6 +13,7 @@ export const Header = styled.header`
   align-items: center;
   padding: 40px;
 
+
   h1 {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
@@ -47,11 +48,10 @@ export const BodyContainer = styled.main`
 `
 
 export const Table = styled.table`
-  display: block;
-  width: 90%;
-  text-align: left;
-  border-collapse: collapse;
-  margin-top: 50px;
+ width: 90%;
+ text-align: left;
+ border-collapse: collapse;
+ margin-top: 50px;
 
  thead th {
    color: #485564;
