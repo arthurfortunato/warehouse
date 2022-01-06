@@ -14,6 +14,6 @@ export const globalErrors = (err: Error, req: Request, res: Response, next: Next
 
     return res.status(500).json({
         status: 'error',
-        message: 'Internal server error'
+        message: 'Internal server error',
     });
 }

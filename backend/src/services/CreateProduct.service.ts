@@ -7,7 +7,7 @@ interface ICreateProduct {
   name: string;
   code: string;
   sector: string;
-  price: number;
+  amount: number;
 }
 
 export class CreateProductService {
@@ -24,7 +24,7 @@ export class CreateProductService {
     if (!product.sector) {
       throw new AppError('Incorrect Sector', 401)
     }
-    if (!product.price) {
+    if (!product.amount) {
       throw new AppError('Incorrect Price', 401)
     }
 
@@ -67,7 +67,7 @@ export class CreateProductService {
     currentProduct.name = name;
     currentProduct.code = code;
     currentProduct.sector = sector;
-    currentProduct.price = price;
+    currentProduct.amount = price;
 
     await productRepository.save(currentProduct)
 

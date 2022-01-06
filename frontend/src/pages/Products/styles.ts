@@ -20,16 +20,38 @@ export const Header = styled.header`
       background: #2F855A;
     }
   }
+
+  @media(max-width: 1000px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+  @media(max-width: 840px) {
+    button {
+      display: none
+    }
+    justify-content: center;
+    padding: 20px;
+  }
 `
 
 export const BodyContainer = styled.main`
   display: flex;
   justify-content: space-between;
+
+  @media(max-width: 740px) {
+    flex-direction: column;
+  }
 `
 
 export const InputContainer = styled.main`
   width: 90%;
   margin: 40px;
+
+  @media(max-width: 740px) {
+    width: 95%;
+    margin: 10px;
+  }
 `
 
 export const Label = styled.label`
@@ -39,6 +61,11 @@ export const Label = styled.label`
   color: #fff;
   p {
     color: red;
+  }
+
+  @media(max-width: 740px) {
+    padding-bottom: 10px;
+    font-size: 1.2rem;
   }
 `
 
@@ -53,5 +80,12 @@ export const Buttons = styled.div`
 
     }
  }
+
+ @media(max-width: 740px) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 10px;
+  }
 `
 

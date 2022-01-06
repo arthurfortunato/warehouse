@@ -13,7 +13,6 @@ export const Header = styled.header`
   align-items: center;
   padding: 40px;
 
-
   h1 {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
@@ -22,6 +21,21 @@ export const Header = styled.header`
 
   button {
     padding: 12px 24px;
+  }
+
+  @media(max-width: 930px) {
+    h1 {
+      font-size: 1.2rem;
+    }
+  }
+  @media(max-width: 715px) {
+    h1 {
+      display: none;
+    }
+    justify-content: flex-end;
+    button {
+      font-size: 1rem;
+    }
   }
 `
 export const BodyContainer = styled.main`
@@ -33,10 +47,11 @@ export const BodyContainer = styled.main`
 `
 
 export const Table = styled.table`
- width: 90%;
- text-align: left;
- border-collapse: collapse;
- margin-top: 50px;
+  display: block;
+  width: 90%;
+  text-align: left;
+  border-collapse: collapse;
+  margin-top: 50px;
 
  thead th {
    color: #485564;
@@ -83,7 +98,6 @@ export const Table = styled.table`
       background: #C53030;
     }
  }
-
 `
 
 

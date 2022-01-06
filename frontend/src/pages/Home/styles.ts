@@ -24,6 +24,10 @@ export const SectionLanding = styled.section`
   align-items: center;
   justify-content: center;
   background: #2D3748;
+
+  @media(max-width: 800px) {
+    display: none;
+  }
 `
 
 export const BodyContainer = styled.main`
@@ -60,6 +64,31 @@ export const BodyContainer = styled.main`
 
     &:hover {
     background: #2F855A;
+    }
+  }
+
+  @media(max-width: 920px) {
+    text-align: center;
+
+    button {
+      display: flex;
+      margin: 10px auto;
+      width: 60%;
+      justify-content: center;
+    }
+  }
+
+  @media(max-width: 500px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    button {
+      font-size: 1rem;
     }
   }
 `

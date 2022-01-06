@@ -24,7 +24,7 @@ class Product {
   sector: string;
 
   @Column()
-  price: number;
+  amount: number;
 
   @CreateDateColumn()
   created_at: Date;
